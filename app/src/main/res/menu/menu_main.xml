@@ -7,4 +7,17 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:title="Search"
+        android:icon="@android:drawable/ic_menu_search" />
+
+    <item
+        android:id="@+id/action_problem"
+        android:title="Report a Problem"
+        app:showAsAction="never" />
+
 </menu>
