@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+//comment test
 
         button2.setOnClickListener{
             Toast.makeText(this@MainActivity, "This is button 1", Toast.LENGTH_LONG).show()
