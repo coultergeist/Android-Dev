@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ZombieRecycler">
+    tools:context=".AboutAppActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -12,25 +12,27 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/Theme.AppCompat.Light">
+        android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:scrollbars="vertical"
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/aboutPageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:text="Welcome to the Danielle's app! \n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent finibus sodales lectus. Cras dictum finibus felis id tempus. Nullam facilisis bibendum justo, in feugiat erat commodo malesuada. Sed eu fermentum ante."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
 
+</android.support.constraint.ConstraintLayout>

@@ -6,10 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
+import android.widget.Toast
 
 
 class ZombieRecycler : AppCompatActivity() {
@@ -21,6 +20,10 @@ class ZombieRecycler : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_zombie_recycler)
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+
+        //get support actionbar corresponding and up nav
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewManager = LinearLayoutManager(this)
         viewAdapter = RecycleAdapter(this)
@@ -34,6 +37,35 @@ class ZombieRecycler : AppCompatActivity() {
             adapter = viewAdapter
         }//end recyclerView
     }//end onCreate
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_movie_list, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                Toast.makeText(this@ZombieRecycler, "Settings Menu", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.action_rate -> {
+                Toast.makeText(this@ZombieRecycler, "You have selected to rate this list", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.action_search -> {
+                Toast.makeText(this@ZombieRecycler, "Search", Toast.LENGTH_LONG).show()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }//end Zombie Recycler
 
 class RecycleAdapter(zombieRecycler: ZombieRecycler):RecyclerView.Adapter<RecycleAdapter.ViewHolder>(){
