@@ -1,5 +1,5 @@
 
-<h2>Core concepts of mobile application development with a focus on the Android platform. Will:</h2>
+<h2>Mobile application development with a focus on the Android platform that will:</h2>
 <ul>
 <li>Account for different mobile-device form factors and OS versions,</li>
 <li>Account for mobile-specific UI & performance constraints</li>
