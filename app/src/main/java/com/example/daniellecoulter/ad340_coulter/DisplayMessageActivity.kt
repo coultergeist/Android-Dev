@@ -1,5 +1,6 @@
 package com.example.daniellecoulter.ad340_coulter
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Message
 import android.os.Parcel
@@ -10,10 +11,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import android.content.SharedPreferences
+
 
 class DisplayMessageActivity() : AppCompatActivity(), Parcelable {
     //declare unique tag for log method
     private val TAG = DisplayMessageActivity::class.java.getSimpleName()
+    lateinit var SharedPreferences: SharedPreferences
+    lateinit var SharedPreferencesHelper: SharedPreferencesHelper
 
     constructor(parcel: Parcel) : this() {
     }
@@ -35,8 +40,15 @@ class DisplayMessageActivity() : AppCompatActivity(), Parcelable {
         // Capture the layout's TextView and set the string as its text
         val textView = findViewById<TextView>(R.id.textView)
 
-        textView.setText(message)
+        //initialzing shared preferences
+        SharedPreferences = this.getSharedPreferences("default", Context.MODE_PRIVATE);
+        SharedPreferencesHelper = SharedPreferencesHelper(SharedPreferences);
+
+        //display the message that was just entered
+        val messageShared = SharedPreferencesHelper.getSharedPreferences();
+        textView.setText(messageShared)
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

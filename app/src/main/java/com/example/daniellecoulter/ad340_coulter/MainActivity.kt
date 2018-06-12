@@ -14,6 +14,7 @@ import android.widget.Toast
 import android.support.design.widget.NavigationView
 import android.app.SearchManager
 import android.content.Context
+import android.content.SharedPreferences
 import android.support.v4.widget.DrawerLayout
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.ActionBar
@@ -30,11 +31,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     // Create constant for logcat
     private val TAG = MainActivity::class.java.simpleName
+    lateinit var SharedPreferences: SharedPreferences
+    lateinit var SharedPreferencesHelper: SharedPreferencesHelper
+    lateinit var context: Context
+    lateinit var editText: EditText;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_drawer_activity)
         setSupportActionBar(toolbar)
+
+        context = this.applicationContext
+
+        //initialzing shared preferences
+        SharedPreferences = this.getSharedPreferences("default", Context.MODE_PRIVATE);
+        SharedPreferencesHelper = SharedPreferencesHelper(SharedPreferences);
 
         var toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -44,12 +55,31 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
+        var savedName = SharedPreferencesHelper.getSharedPreferences();
+        //setting default name to edit text view
+        editText = this.findViewById(R.id.editText)
+        editText.setText(savedName)
+
         movie_button.setOnClickListener { view ->
             val intent = Intent(this, ZombieRecycler::class.java).apply {
             }
             startActivity(intent)
         }
-//comment test
+
+        //HW 5: display error for null/numeric entry to editText field
+        button.setOnClickListener {
+            val textInput = editText.text.toString()
+            if(inputIsValid(textInput)){
+                SharedPreferencesHelper.putSharedPreferencesHelper(textInput);
+
+                val intent = Intent(this@MainActivity, DisplayMessageActivity::class.java)
+                intent.putExtra("Enter a message", textInput)
+                startActivity(intent)
+            }//end of if string is not empty
+            else{
+                Toast.makeText(this@MainActivity, "Invalid Input", Toast.LENGTH_LONG).show()
+            }
+        }
 
         button2.setOnClickListener{
             Toast.makeText(this@MainActivity, "This is button 1", Toast.LENGTH_LONG).show()
@@ -62,6 +92,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         button4.setOnClickListener{
             Toast.makeText(this@MainActivity, "This is button 3", Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun inputIsValid(string: String): Boolean {
+        if(string.length == 0){
+            return false
+        }
+        if(string.matches("-?\\d+(\\.\\d+)?".toRegex())){
+            return false
+        }
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -120,7 +160,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     //Called when the user taps the Send button
     //Activity from Android Dev tutorial
-        //https://developer.android.com/training/basics/firstapp/starting-activity.html
+    //https://developer.android.com/training/basics/firstapp/starting-activity.html
 
     fun sendMessage(view: View){
         //Do something in response to button
