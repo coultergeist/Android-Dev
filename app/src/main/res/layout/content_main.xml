@@ -40,7 +40,7 @@
     <Button
         android:id="@+id/movie_button"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="55dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
@@ -54,10 +54,11 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:text="Live Cams"
-        app:layout_constraintBaseline_toBaselineOf="@+id/movie_button"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/movie_button" />
 
@@ -65,14 +66,13 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="1dp"
         android:layout_marginStart="1dp"
-        android:text="Button"
+        android:text="Map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movie_button" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button4"

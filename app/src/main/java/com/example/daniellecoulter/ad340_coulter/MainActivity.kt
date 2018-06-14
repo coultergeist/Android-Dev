@@ -90,8 +90,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(intent)
         }
 
+        //HW7: button to show Map
         button3.setOnClickListener{
-            Toast.makeText(this@MainActivity, "This is button 2", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, MapsActivity::class.java).apply{
+            }
+            startActivity(intent)
         }
 
         button4.setOnClickListener{
