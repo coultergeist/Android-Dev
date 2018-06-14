@@ -40,4 +40,5 @@ dependencies {
     //dependecy for picasso image loading
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+
 }

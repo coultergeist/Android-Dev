@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         editText = this.findViewById(R.id.editText)
         editText.setText(savedName)
 
+
+
         movie_button.setOnClickListener { view ->
             val intent = Intent(this, ZombieRecycler::class.java).apply {
             }
@@ -81,8 +83,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
+        //HW6: button to show live cams
         button2.setOnClickListener{
-            Toast.makeText(this@MainActivity, "This is button 1", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, CamActivity::class.java).apply{
+            }
+            startActivity(intent)
         }
 
         button3.setOnClickListener{
